@@ -1,0 +1,26 @@
+{
+  "name": "tokens",
+  "version": "1.0.0",
+  "description": "Token based authentication based on jwt and persistent token model",
+  "main": "server.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "node_modules/.bin/mocha tests/**"
+  },
+  "keywords": [
+    "authenticate",
+    "verufy",
+    "node",
+    "express",
+    "security",
+    "token"
+  ],
+  "author": "Behnam Hajian.",
+  "license": "Behnam",
+  "dependencies": {
+
+  },
+  "devDependencies": {
+    "mocha": "^2.2.4"
+  }
+}
