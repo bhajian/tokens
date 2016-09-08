@@ -3,10 +3,9 @@ Tokens2 is a token based authentication module that works based on two tokens:
     1- json web token (jwt) ensures the used is logged in is a valid user
     2- access token which makes sure the user is not invalidated
 
-    Reference-style:
-    ![alt text][protocol-image]
+[![Protocol Logo](https://github.com/bhajian/tokens/blob/master/protocol.png)]
 
-    [protocol-image]: https://github.com/bhajian/tokens/blob/master/protocol.png "tokens2 protocol"
+
 
 This protocol works based on a short time to live jwt token.
 The access token is persisted in a database which never expires unless we invalidate the user.
@@ -77,4 +76,4 @@ we can use the above model to verify username/password and persist access token 
     cryptoAlgorithm: 'aes-256-ctr'}));
 ```
 
-
+[npm-image]: https://github.com/bhajian/tokens/blob/master/protocol.png
