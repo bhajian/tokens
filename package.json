@@ -15,8 +15,24 @@
     "security",
     "token"
   ],
-  "author": "Behnam Hajian.",
-  "license": "Behnam",
+  "author": {
+    "name": "Behnam Hajian",
+    "email": "b.hajian@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bhajian/tokens.git"
+  },
+  "bugs": {
+    "url": "http://github.com/bhajian/tokens/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://opensource.org/licenses/MIT"
+    }
+  ],
+  "license": "MIT",
   "dependencies": {
     "password-hash": "^1.2.2",
     "jsonwebtoken": "7.1.9"
