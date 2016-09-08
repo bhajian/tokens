@@ -6,7 +6,7 @@ Tokens2 is a token based authentication module that works based on two tokens:
     Reference-style:
     ![alt text][protocol-image]
 
-    [protocol-image]: https://github.com/bhajian/tokens/protocol.png "tokens2 protocol"
+    [protocol-image]: https://github.com/bhajian/tokens/blob/master/protocol.png "tokens2 protocol"
 
 This protocol works based on a short time to live jwt token.
 The access token is persisted in a database which never expires unless we invalidate the user.
