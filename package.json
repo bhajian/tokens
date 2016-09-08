@@ -1,6 +1,6 @@
 {
   "name": "tokens2",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Token based authentication based on jwt and persistent token model",
   "main": "server.js",
   "scripts": {
@@ -18,7 +18,8 @@
   "author": "Behnam Hajian.",
   "license": "Behnam",
   "dependencies": {
-
+    "password-hash": "^1.2.2",
+    "jsonwebtoken": "7.1.9"
   },
   "devDependencies": {
     "mocha": "^2.2.4"
