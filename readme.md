@@ -17,6 +17,7 @@ Tokens2 has two apis:
   - Authentication : Receives userName and user Model including password to verify the identity and authenticity of the user.
   - Verification : verifies if the user is a correct user and has access to the apis based on the information in the token.
     * Note: if the token is expired, access-token is verified. Access-token is persisted and can be invalidated.
+    For example we can set 1 hour for the first token to be expired and use the access-token when the token is expired.
 
 
 if the UserModel bellow is persistent model for user:
@@ -59,11 +60,11 @@ we can use the above model to verify username/password and persist access token 
   var authenticate = require('tokens2').authentication.authenticate;
   var verify = require('tokens2').verification.verify;
 
-  // This method is called if tokens are valid.
+  // This method is called if tokens are valid. The first token expires in 15 minutes.
   router.get('/', verify({
     userModel: UserModel,
     secret: 'superSecret',
-    expiresIn: '2s',
+    expiresIn: '15m',
     cryptoAlgorithm: 'aes-256-ctr'}), function(req, res, next) {
         res.json({'message': 'you have landed here.', newtoken: res.token});
       });
@@ -72,7 +73,7 @@ we can use the above model to verify username/password and persist access token 
   router.post('/authenticate', authenticate({
     userModel: UserModel,
     secret: 'superSecret',
-    expiresIn: '2d',
+    expiresIn: '15m',
     cryptoAlgorithm: 'aes-256-ctr'}));
 ```
 
