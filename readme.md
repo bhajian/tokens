@@ -85,15 +85,18 @@ tokens2 can be used to verify and validate websocket connections. The usage is a
 
 assuming `../model/user.js` is designed to be :
 
-```var mongoose = require('mongoose');
-   var Schema = mongoose.Schema;
 
-   // set up a mongoose model and pass it using module.exports
-   module.exports = mongoose.model('User', new Schema({
-     userName: String,
-     password: String,
-     accessToken: String,
-   }));
+```
+  var mongoose = require('mongoose');
+  var Schema = mongoose.Schema;
+
+  // set up a mongoose model and pass it using module.exports
+  module.exports = mongoose.model('User', new Schema({
+    userName: String,
+    password: String,
+    accessToken: String,
+  }));
+
 ```
 
 we can use the above UserModel in our wesocket function with the following format:
