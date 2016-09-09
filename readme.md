@@ -83,7 +83,8 @@ we can use the above model to verify username/password and persist access token 
 
 tokens2 can be used to verify and validate websocket connections. The usage is as bellow:
 
-assuming ```../model/user.js``` is designed to be :
+assuming `../model/user.js` is designed to be :
+
 ```var mongoose = require('mongoose');
    var Schema = mongoose.Schema;
 
@@ -93,7 +94,7 @@ assuming ```../model/user.js``` is designed to be :
      password: String,
      accessToken: String,
    }));
-   ```
+```
 
 we can use the above UserModel in our wesocket function with the following format:
 
