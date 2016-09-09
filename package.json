@@ -1,6 +1,6 @@
 {
   "name": "tokens2",
-  "version": "1.0.2",
+  "version": "1.1.1",
   "description": "Token based authentication based on jwt and persistent token model",
   "main": "server.js",
   "scripts": {

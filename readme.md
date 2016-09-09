@@ -53,7 +53,7 @@ var UserModel = {
 
 we can use the above model to verify username/password and persist access token in the DB.
 
-### tokens2 Usage:
+### tokens2 Usage with express:
 
 ```
   var authenticate = require('tokens2').authentication.authenticate;
@@ -75,5 +75,64 @@ we can use the above model to verify username/password and persist access token 
     expiresIn: '15m',
     cryptoAlgorithm: 'aes-256-ctr'}));
 ```
+[![rest call](https://github.com/bhajian/tokens/blob/master/rest-call.png)]
+[![authenticate(https://github.com/bhajian/tokens/blob/master/authenticate.png)]
 
+
+### tokens2 Usage with Web Socket
+
+tokens2 can be used to verify and validate websocket connections. The usage is as bellow:
+
+assuming ```../model/user.js``` is designed to be :
+```var mongoose = require('mongoose');
+   var Schema = mongoose.Schema;
+
+   // set up a mongoose model and pass it using module.exports
+   module.exports = mongoose.model('User', new Schema({
+     userName: String,
+     password: String,
+     accessToken: String,
+   }));
+   ```
+
+we can use the above UserModel in our wesocket function with the following format:
+
+```
+var verify = require('tokens2').verification.verify;
+var UserModel = require('../../model/user');
+
+exports.websocketServer = function websocketServer(options, callback){
+  var verifyMe = verify({
+    userModel: UserModel,
+    secret: 'superSecret',
+    expiresIn: '15m',
+    cryptoAlgorithm: 'aes-256-ctr'
+  });
+  var sockets = new ws.Server({
+    server: options.server
+  });
+
+  sockets.on('connection', function(client) {
+    console.log('Connection.');
+    var res = {};
+    verifyMe({headers: client.upgradeReq.headers, body:{}, query: {}}, res,
+      function () {
+        console.log(JSON.stringify(res));
+        acceptMessages(client);
+      });
+  });
+
+  return callback();
+};
+```
+The websocket client sends the tokens as connection headers as :
+
+```
+var WebSocket = require('ws');
+var ws = new WebSocket('ws://localhost:3000/', {
+  headers: {
+    'x-token' : 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c2Vycy81N2M4ZmZhNmQxMzNhMjU0NDdkODg4M2MiLCJpYXQiOjE0NzM0NDk0MTYsImV4cCI6MTQ3MzQ1MDMxNn0.YEWSG_yvXsgzLnv2Asmk6SO10SHAwl6odBYCMBHQR1cA',
+    'x-access-token': '3c4e13e04fe931e52263dc3c0ecb704012399d7ffea9ec80bd2c0ce9a1622b3a6ca241f874acdf386bf3693a7c0ecafb2b9ec87b4ab72285d39f2866711d4245b7732f0832936d6066e8af04f6eafae6cc8a',
+}});
+```
 [npm-image]: https://github.com/bhajian/tokens/blob/master/protocol.png
