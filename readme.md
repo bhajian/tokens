@@ -76,7 +76,7 @@ we can use the above model to verify username/password and persist access token 
     cryptoAlgorithm: 'aes-256-ctr'}));
 ```
 [![rest call](https://github.com/bhajian/tokens/blob/master/rest-call.png)]
-[![authenticate(https://github.com/bhajian/tokens/blob/master/authenticate.png)]
+[![authenticate](https://github.com/bhajian/tokens/blob/master/authenticate.png)]
 
 
 ### tokens2 Usage with Web Socket
